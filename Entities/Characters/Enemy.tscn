@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1qxf3mtug5fy"]
+
+[ext_resource type="Script" uid="uid://cuaugs6ls0g81" path="res://Scripts/Entities/Enemies/DeafultEnemy.cs" id="1_wuubm"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_s7wgv"]
+size = Vector2(20, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1qlrc"]
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_wuubm")
+healthPoints = 100
+moveSpeed = 25.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+texture = SubResource("PlaceholderTexture2D_s7wgv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1qlrc")
