@@ -4,6 +4,9 @@ using System.Diagnostics;
 
 public partial class Gun : Area2D, Weapon
 {
+    //[Export]
+    //public int numberOfWeapons { get; set; }
+
     [Export]
     public float fireRate { get; set; } = 0.5f;
     public float timeSinceLastAttack { get; set; } = 0f;
