@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://f5dje8i5l34d"]
+
+[ext_resource type="Script" uid="uid://b8huoax1c6n43" path="res://Scripts/Entities/Loot/XPOrb.cs" id="1_eogok"]
+[ext_resource type="Texture2D" uid="uid://88mmaa66078s" path="res://icon.svg" id="2_wg58s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_02st5"]
+
+[node name="XpOrb" type="Area2D"]
+script = ExtResource("1_eogok")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.165, 0.165)
+skew = 0.92677
+texture = ExtResource("2_wg58s")
+
+[node name="Area2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_02st5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

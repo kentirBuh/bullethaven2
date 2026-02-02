@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 
 public partial class PlayerCharacter : CharacterBody2D, IGameEntity
@@ -11,6 +12,8 @@ public partial class PlayerCharacter : CharacterBody2D, IGameEntity
             
     [Export]
     public int manaPoints { get; set; }
+
+    public int Level { get; set; }
 
     //[Export]
     //public IBehavior behavior { get; protected set; }
@@ -26,7 +29,12 @@ public partial class PlayerCharacter : CharacterBody2D, IGameEntity
     manaPoints = mana;
     moveSpeed = speed;
     XPerience = 0;
+    Level = 1;
 }
+
+
+
+//functions
 
     public void GetInput()
     {
@@ -51,7 +59,29 @@ public partial class PlayerCharacter : CharacterBody2D, IGameEntity
     public void HasDied()
     {
         GD.Print($"{characterName} has died.");
-        // Additional death logic here
+        // no logic for death yet
+    }
+
+    public void LevelUp()
+    {
+        Level += 1;
+        XPerience = 0;
+        GD.Print($"{characterName} has leveled up to Level {Level}!");
+    }
+
+    public void GainExperience(int xpGained)
+    {
+        XPerience += xpGained;
+        if( XPerience >= LevelThresholdFunction() )
+        {
+            LevelUp();
+        }
+        GD.Print($"{characterName} gained {xpGained} XP. Total XP: {XPerience}");
+    }
+
+    public double LevelThresholdFunction()
+    {
+        return Math.Pow(2,Level) * 100;
     }
 
 }

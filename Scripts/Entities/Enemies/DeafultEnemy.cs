@@ -5,12 +5,21 @@ using System.Net.NetworkInformation;
 
 public partial class DeafultEnemy : CharacterBody2D, IGameEntity
 {
+    //properties
     [Export]
     public string characterName { get; set; }
     [Export]
     public int healthPoints { get; set; }
     [Export]
     public float moveSpeed { get; set; }
+    [Export]
+    public int XPValue { get; set; }
+
+    //packed scenes
+    [Export]
+    public PackedScene xpOrbScene;
+
+    //player reference
     [Export]
     public CharacterBody2D playerReference;
 
@@ -38,6 +47,7 @@ public partial class DeafultEnemy : CharacterBody2D, IGameEntity
     public void HasDied()
     {
         GD.Print($"{characterName} has died.");
+        OnDeathDrop();
         QueueFree();
     }
 
@@ -45,5 +55,18 @@ public partial class DeafultEnemy : CharacterBody2D, IGameEntity
     {
         GD.Print($"{characterName} attacks {enemy.characterName}!");
         // Attack logic here
+    }
+    public void OnDeathDrop()
+    {
+        DropXPOrb();
+    }
+
+    public void DropXPOrb()
+    {
+        var xpOrbInstance = xpOrbScene.Instantiate<XPOrb>();
+        xpOrbInstance.GlobalPosition = GlobalPosition;
+        xpOrbInstance.xpAmount = XPValue;
+        GD.Print($"{characterName} dropped an XP Orb worth {XPValue} XP.");
+        GetTree().CurrentScene.AddChild(xpOrbInstance);
     }
 }
