@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnri45fgcjcay"]
+[gd_scene load_steps=6 format=3 uid="uid://bnri45fgcjcay"]
 
 [ext_resource type="PackedScene" uid="uid://bwh2vs57m76cg" path="res://Entities/Characters/TestCharacter.tscn" id="1_r5l72"]
-[ext_resource type="PackedScene" uid="uid://c1qxf3mtug5fy" path="res://Entities/Characters/Enemy.tscn" id="2_50ct6"]
+[ext_resource type="PackedScene" uid="uid://c1qxf3mtug5fy" path="res://Entities/Monsters/Enemy.tscn" id="2_50ct6"]
+[ext_resource type="PackedScene" uid="uid://coidb35b7nsg3" path="res://Entities/Monsters/Spawners/Spawner.tscn" id="2_ak5v8"]
 [ext_resource type="PackedScene" uid="uid://b7lsri5owhg30" path="res://Objects/rock_object.tscn" id="2_r5l72"]
 [ext_resource type="PackedScene" uid="uid://f5dje8i5l34d" path="res://Objects/Items/XPOrb/XPOrb.tscn" id="4_hb2xm"]
 
@@ -32,6 +33,9 @@ color = Color(0.267866, 0.274347, 0.197821, 1)
 
 [node name="TestCharacter" parent="." instance=ExtResource("1_r5l72")]
 position = Vector2(248, 194)
+maxHealthPoints = 100
+healthPoints = 100
+moveSpeed = 100.0
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("playerReference") instance=ExtResource("2_50ct6")]
 position = Vector2(197, 281)
@@ -45,3 +49,7 @@ playerReference = NodePath("../TestCharacter")
 
 [node name="XpOrb" parent="." instance=ExtResource("4_hb2xm")]
 position = Vector2(192, 119)
+
+[node name="Spawner" parent="." node_paths=PackedStringArray("PlayerScene") instance=ExtResource("2_ak5v8")]
+position = Vector2(-147, 227)
+PlayerScene = NodePath("../TestCharacter")

@@ -8,10 +8,17 @@ public partial class PlayerCharacter : CharacterBody2D, IGameEntity
     [Export]
     public string characterName { get; set; }
     [Export]
+    public int maxHealthPoints { get; set; }
+    [Export]
     public int healthPoints { get; set; }
             
     [Export]
     public int manaPoints { get; set; }
+    [Export]
+    public int attackValue { get; set; }
+    [Export]
+    public float attackSpeed { get; set; }
+
 
     public int Level { get; set; }
 
@@ -23,11 +30,14 @@ public partial class PlayerCharacter : CharacterBody2D, IGameEntity
     [Export]
     public int XPerience { get; set; }
 
-    public PlayerCharacter( int hp, int mana, float speed)
+    public PlayerCharacter( int hp, int mana, float speed, int attack, float attackSpd)
 {
+    maxHealthPoints = hp;
     healthPoints = hp;
     manaPoints = mana;
     moveSpeed = speed;
+    attackValue = attack;
+    attackSpeed = attackSpd;
     XPerience = 0;
     Level = 1;
 }

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c1qxf3mtug5fy"]
 
-[ext_resource type="Script" uid="uid://cuaugs6ls0g81" path="res://Scripts/Entities/Enemies/DeafultEnemy.cs" id="1_wuubm"]
-[ext_resource type="PackedScene" uid="uid://f5dje8i5l34d" path="res://Objects/Items/XPOrb/XPOrb.tscn" id="2_s7wgv"]
+[ext_resource type="Script" uid="uid://cuaugs6ls0g81" path="res://Scripts/Entities/Enemies/DeafultEnemy.cs" id="1_ngq56"]
+[ext_resource type="PackedScene" uid="uid://f5dje8i5l34d" path="res://Objects/Items/XPOrb/XPOrb.tscn" id="2_dy8jv"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_s7wgv"]
 size = Vector2(20, 20)
@@ -11,12 +11,12 @@ size = Vector2(20, 20)
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 3
-script = ExtResource("1_wuubm")
+script = ExtResource("1_ngq56")
 characterName = "buh"
 healthPoints = 100
 moveSpeed = 25.0
 XPValue = 10
-xpOrbScene = ExtResource("2_s7wgv")
+xpOrbScene = ExtResource("2_dy8jv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true

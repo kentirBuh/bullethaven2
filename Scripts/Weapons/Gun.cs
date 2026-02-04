@@ -16,7 +16,7 @@ public partial class Gun : Area2D, Weapon
     public override void _Ready()
     {
         attackScene = GD.Load<PackedScene>("res://Objects/bullet.tscn");
-        var shootTimer = GetNode<Timer>("%ShootTimer");
+        var shootTimer = GetNode<Timer>("Timer");
         shootTimer.WaitTime = fireRate;
         shootTimer.Start();
     }
@@ -32,7 +32,7 @@ public partial class Gun : Area2D, Weapon
         public void ChangeFireRate(float newFireRate)
     {
         fireRate = newFireRate;
-        var shootTimer = GetNode<Timer>("%ShootTimer");
+        var shootTimer = GetNode<Timer>("%Timer");
         shootTimer.WaitTime = fireRate;
     }
 

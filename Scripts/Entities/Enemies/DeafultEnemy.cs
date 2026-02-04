@@ -58,7 +58,8 @@ public partial class DeafultEnemy : CharacterBody2D, IGameEntity
     }
     public void OnDeathDrop()
     {
-        DropXPOrb();
+
+       CallDeferred(nameof(DropXPOrb));
     }
 
     public void DropXPOrb()
